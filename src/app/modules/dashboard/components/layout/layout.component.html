@@ -1,0 +1,27 @@
+<div class="container_indicators flex">
+    <div class='indicator flex-row center' *ngIf="btcUsd">
+        <div class="title">BTCUSD</div>
+        <div class="price">${{btcUsd.price}}</div>
+        <div> ({{btcUsd.delta}}%)</div>
+    </div>
+    <div class='indicator flex-row center' *ngIf="btcUsd">
+        <div class="title">ETHUSD</div>
+        <div class="price">${{btcUsd.price}}</div>
+        <div> ({{btcUsd.delta}}%)</div>
+    </div>
+    <div class='indicator flex-row center' *ngIf="btcUsd">
+        <div class="title">ZECUSD</div>
+        <div class="price">${{btcUsd.price}}</div>
+        <div> ({{btcUsd.delta}}%)</div>
+    </div>
+</div>
+
+
+
+
+<div>
+  <pre>{{ data | json }}</pre>
+</div>
+<table>
+  <tr><td></td></tr>
+</table>
