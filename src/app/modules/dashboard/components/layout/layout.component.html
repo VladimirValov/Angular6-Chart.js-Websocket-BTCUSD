@@ -4,7 +4,7 @@
         <div class="price">${{btcUsd.price}}</div>
         <div> ({{btcUsd.delta}}%)</div>
     </div>
-    <div class='indicator flex-row center' *ngIf="btcUsd">
+    <!-- <div class='indicator flex-row center' *ngIf="btcUsd">
         <div class="title">ETHUSD</div>
         <div class="price">${{btcUsd.price}}</div>
         <div> ({{btcUsd.delta}}%)</div>
@@ -13,10 +13,12 @@
         <div class="title">ZECUSD</div>
         <div class="price">${{btcUsd.price}}</div>
         <div> ({{btcUsd.delta}}%)</div>
-    </div>
+    </div> -->
 </div>
 
-
+<div>
+    <canvas id="canvas">{{ chart }}</canvas>
+</div>
 
 
 <div>
