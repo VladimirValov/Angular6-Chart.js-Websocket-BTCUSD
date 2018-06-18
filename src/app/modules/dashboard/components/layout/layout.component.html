@@ -1,29 +1,24 @@
-<div class="container_indicators flex">
-    <div class='indicator flex-row center' *ngIf="btcUsd">
-        <div class="title">BTCUSD</div>
-        <div class="price">${{btcUsd.price}}</div>
-        <div> ({{btcUsd.delta}}%)</div>
+<div *ngIf="btcUsd; else spinner">
+    <div class="container_indicators flex">
+        <div class='indicator flex-row center' >
+            <div class="title">BTCUSD</div>
+            <div class="price">${{btcUsd.price}}</div>
+            <div [ngClass]="{delta: true, up: btcUsd.delta > 0, down: btcUsd.delta < 0}">{{btcUsd.delta}}%</div>
+        </div>
     </div>
-    <!-- <div class='indicator flex-row center' *ngIf="btcUsd">
-        <div class="title">ETHUSD</div>
-        <div class="price">${{btcUsd.price}}</div>
-        <div> ({{btcUsd.delta}}%)</div>
+    <div class="container_chart flex-row center">
+        <app-chart [labels]="times" [dataset]="prices"></app-chart>
     </div>
-    <div class='indicator flex-row center' *ngIf="btcUsd">
-        <div class="title">ZECUSD</div>
-        <div class="price">${{btcUsd.price}}</div>
-        <div> ({{btcUsd.delta}}%)</div>
-    </div> -->
+    <div class="container_raw_data ">
+        <pre>{{ data | json }}</pre>
+    </div>
 </div>
 
-<div>
-    <canvas id="canvas">{{ chart }}</canvas>
-</div>
+<ng-template #spinner>
+    <div class="container_spinner flex-row h-100 center">
+        Data Loading...
+    </div>
+</ng-template>
 
 
-<div>
-  <pre>{{ data | json }}</pre>
-</div>
-<table>
-  <tr><td></td></tr>
-</table>
+

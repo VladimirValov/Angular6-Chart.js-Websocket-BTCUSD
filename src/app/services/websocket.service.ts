@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Subject, Observable, Observer } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { Subject, Observable, Observer } from "rxjs";
 
 @Injectable()
 export class WebsocketService {
+  constructor() {}
 
-  constructor() { }
-
-  private url = 'wss://api.gemini.com/v1/marketdata/BTCUSD';
+  private url = "wss://api.gemini.com/v1/marketdata/BTCUSD";
   private subject: Subject<string>;
 
   public connect(): Subject<string> {
     if (!this.subject) {
       this.subject = this.createConnection();
-      console.log('Connection created');
+      console.log("Connection created");
     }
     return this.subject;
   }
@@ -21,28 +20,26 @@ export class WebsocketService {
     const ws = new WebSocket(this.url);
 
     ws.onopen = () => {
-      console.log('open');
+      console.log("open");
       console.log(ws.readyState);
       // ws.send('test');
     };
 
-    ws.onerror = (err) => {
-      console.log('Connection error');
+    ws.onerror = err => {
+      console.log("Connection error");
     };
 
-
-
     const observable = Observable.create((obs: Observer<MessageEvent>) => {
-      ws.onmessage = (event) => {
+      ws.onmessage = event => {
         // console.log('onmessage', event.data);
         obs.next(event.data);
       };
-      ws.onerror = (err) => {
-        console.log('onerror', err);
+      ws.onerror = err => {
+        console.log("onerror", err);
         obs.error(err);
       };
       ws.onclose = () => {
-        console.log('onclose');
+        console.log("onclose");
         ws.close();
       };
     });

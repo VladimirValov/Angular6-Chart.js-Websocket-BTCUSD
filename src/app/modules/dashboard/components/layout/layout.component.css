@@ -12,3 +12,23 @@
     text-align: center;
     justify-content: center;
 }
+.h-100 {
+    height: 100vh;
+}
+.delta {
+    font-size: 14px;
+}
+.down {
+    color: #E74C3B;
+}
+.down::before {
+    padding-right: 2px;
+    content: "▼";
+}
+.up {
+    color: #5EAF5D;
+}
+.up::before {
+    padding-right: 2px;
+    content: "▲";
+}
